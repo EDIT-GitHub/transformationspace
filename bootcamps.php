@@ -54,7 +54,7 @@ get_header(); ?>
                                         <option value="0" selected>Location/School</option>
                                         <?php 
 										$args = array(
-											'post_type' => 'Bootcamps',
+											'post_type' => 'Bootcamps-local',
 											'post_status' => 'publish',
 										);
 										// query
@@ -64,7 +64,7 @@ get_header(); ?>
 											
 	
 											
-											echo '<option value="'.get_field('bootcamp_location').'">'.get_field('bootcamp_location').'</option>';
+											echo '<option value="'.get_the_title().'">'.get_the_title().'</option>';
 											
 											
 											

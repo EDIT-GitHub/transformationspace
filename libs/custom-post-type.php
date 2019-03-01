@@ -81,6 +81,28 @@ function register_post_types() {
 			) 
 			);
 			register_post_type( 'Bootcamps-tipo', $args );
+
+			$args = array(
+				'label' => 'Bootcamps Local',
+				'description' => '',
+				'public' => true,
+				'show_ui' => true,
+				'show_in_menu' => true,
+				'capability_type' => 'post',
+				'hierarchical' => true,
+				'menu_icon' => 'dashicons-location-alt',
+				'query_var' => true,
+				'supports' => array(
+					'title',
+					'editor',
+					'trackbacks',
+					'custom-fields',
+					'comments',
+					'author',
+					'thumbnail'
+				) 
+				);
+				register_post_type( 'Bootcamps-local', $args );
     
     $args = array(
 		'label' => 'Team',

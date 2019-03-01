@@ -139,8 +139,8 @@ jQuery(document).ready(function($) {
   
   
   // $bootcampTipoCustomSelect.add($bootcampLocationCustomSelect).change(function() {
-  jQuery(".row-filter .select-selected").on('DOMSubtreeModified', function() {
-    console.log("changed");
+  jQuery(".row-filter .select-selected").on('DOMSubtreeModified', function(index) {
+    console.log(index);
     var tipo = $bootcampTipo.val(); 
     var localizacao = $bootcampLocation.val();
     
