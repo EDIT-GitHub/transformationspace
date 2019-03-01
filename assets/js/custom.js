@@ -70,15 +70,15 @@ jQuery(function() {
 });
 
 jQuery(document).ready( function ($) {
-
-var $form = jQuery('.form-newsletter-js');
-
+  
+  var $form = jQuery('.form-newsletter-js');
+  
   if ( $form.length > 0 ) {
     $($form).each(function(item) {
       var item = jQuery($form[item]);
       jQuery(this).find("input[type=submit]").bind('click', function ( event ) {
         if (event) event.preventDefault()
-          register(item);
+        register(item);
       });
     });
     
@@ -124,50 +124,51 @@ function register(item) {
       }
     }
   });
-
+  
   
 }
 
 /* filter bootcamps */
-jQuery(function($) {
+
+jQuery(document).ready(function($) {
   /* check if Custom Select Box changed and filter */
-
-  $(".row-filter .select-selected").change(function() {
-    var a = $("#bootcamp-filter").val();
-    var b = $("#bootcamp-location-filter").val();
-
-    //falta verificar se cada box tem um ou ambos os filtros    
-    // if(a === b) {          // Use strict comparison operator as a best practice
-    //     alert(a + ' matches ' + b);
-    // }
-});
-
-  jQuery("#category-select .select-selected").on('DOMSubtreeModified', function() {
-    console.log("changed")
+  
+  var $bootcamps = $('.header-bootcamps .bootcamp-box');
+  var $bootcampTipo = $('#bootcamp-filter');
+  var $bootcampLocation = $('#bootcamp-location-filter');
+  
+  
+  // $bootcampTipoCustomSelect.add($bootcampLocationCustomSelect).change(function() {
+  jQuery(".row-filter .select-selected").on('DOMSubtreeModified', function() {
+    console.log("changed");
+    var tipo = $bootcampTipo.val(); 
+    var localizacao = $bootcampLocation.val();
     
+    console.log('tipo: ' + tipo);
+    console.log('localizacao:' + localizacao);
     
-    var bootcamp = jQuery("#bootcamp-filter").val();
-    console.log(bootcamp)
-
-    if (bootcamp=='0'){
-      jQuery('.bootcamp-box').show("fast");
-    }else{
-      jQuery('.bootcamp-box').not('[data-tipo='+bootcamp+']').fadeOut("fast");
-      jQuery('.bootcamp-box').filter('[data-tipo='+bootcamp+']').fadeIn("fast");    
+    if (tipo == '0' && localizacao == '0') {
+      $bootcamps.removeClass('hidden');
+    } else {
+      $bootcamps.addClass('hidden').filter(function(i, el) {
+        
+        var $el = $(el);
+        var remove = true;
+        
+        //console.log($el.context.dataset.tipo == tipo);
+        if(tipo != '0' && $el.context.dataset.tipo != tipo) {
+          remove = false;
+        }
+        
+        if(localizacao != '0' && $el.context.dataset.location != localizacao) {
+          remove = false;
+        }
+        return remove;
+        
+      }).removeClass('hidden');
     }
   });
   
-    /* check if Custom Select Box changed and filter */
-    jQuery("#location-select .select-selected").on('DOMSubtreeModified', function() {
-    var location = jQuery("#bootcamp-location-filter").val();
-    
-    if (location=='0'){
-      jQuery('.bootcamp-box').show("fast");
-    }else{
-      jQuery('.bootcamp-box').not('[data-location='+location+']').fadeOut("fast");
-      jQuery('.bootcamp-box').filter('[data-location='+location+']').fadeIn("fast");    
-    }
-  });
 });
 
 
@@ -175,44 +176,44 @@ jQuery(function($) {
 jQuery(document).ready(function($) {
   $(".enroll-btn .menu-item-js").attr('data-fancybox', '');
   $(".enroll-btn .menu-item-js").attr('data-src', '#bootCampModal');
-
+  
   /* select facilitator on form */
   $('.facilitator-js').click(function () {
-  //console.log("clicked2");
-
-  var nameEls = document.querySelectorAll(".facilitatores-name .select-items div");
-  var emailEls = document.querySelectorAll(".facilitatores-email .select-items div");
-
-  /* check if facilitator name with equal to checkbox */
-  for (var i = 0; i < nameEls.length; i++) {
-  var name = nameEls[i].innerText;
-
-  var facilitatorName = $(this).attr("data-name");
-  //console.log(facilitatorName);
-
-  if(facilitatorName == name) {
-    $('#select-facilitator').val(facilitatorName);
-    $(".facilitatores-name .select-selected").text(facilitatorName);
-    nameEls[i].classList.add("same-as-selected");
+    //console.log("clicked2");
     
-    var email = emailEls[i].innerText;
-    $('#select-email-facilitator').val(email);
-    emailEls[i].classList.add("same-as-selected");
+    var nameEls = document.querySelectorAll(".facilitatores-name .select-items div");
+    var emailEls = document.querySelectorAll(".facilitatores-email .select-items div");
     
-    // $(".select-items div").removeClass("same-as-selected");
-    // $(".select-items div.1").addClass("same-as-selected");
-   
-  }
-
-  //console.log("Name: " + name);
-}
- 
-  var emailEls = document.querySelectorAll(".facilitatores-email .select-items div");
-  for (var i = 0; i < emailEls.length; i++) {
-  var email = emailEls[i].innerText;
- // console.log("Email: " + email);
-}
-
-
-});
+    /* check if facilitator name with equal to checkbox */
+    for (var i = 0; i < nameEls.length; i++) {
+      var name = nameEls[i].innerText;
+      
+      var facilitatorName = $(this).attr("data-name");
+      //console.log(facilitatorName);
+      
+      if(facilitatorName == name) {
+        $('#select-facilitator').val(facilitatorName);
+        $(".facilitatores-name .select-selected").text(facilitatorName);
+        nameEls[i].classList.add("same-as-selected");
+        
+        var email = emailEls[i].innerText;
+        $('#select-email-facilitator').val(email);
+        emailEls[i].classList.add("same-as-selected");
+        
+        // $(".select-items div").removeClass("same-as-selected");
+        // $(".select-items div.1").addClass("same-as-selected");
+        
+      }
+      
+      //console.log("Name: " + name);
+    }
+    
+    var emailEls = document.querySelectorAll(".facilitatores-email .select-items div");
+    for (var i = 0; i < emailEls.length; i++) {
+      var email = emailEls[i].innerText;
+      // console.log("Email: " + email);
+    }
+    
+    
+  });
 });
