@@ -287,7 +287,7 @@ if( $blog_section ):
 </div>
 <?php endif; ?>
 
-<section class="blog">
+<section class="blog pb-40">
     <div class="container">
         <?php get_template_part( 'template-parts/transformation_space/article-slider'); ?>
     </div>
