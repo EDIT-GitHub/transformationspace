@@ -29,10 +29,13 @@ if( $the_query->have_posts() ):
         //var_dump($tipo);
         $bootcamp_type = $tipo->ID;
     }
+    $locales = get_field('bootcamp_local');
+    foreach ( $locales as $local ){
+        //var_dump($local);
+        $bootcamp_local = $local->post_name;
+    }
 ?>
-<div class="bordered-box bootcamp-box" data-id="<?php echo get_the_ID(); ?>"
-    data-location="<?php the_field('bootcamp_location'); ?>" 
-    data-tipo="<?php echo $bootcamp_type; ?>">
+<div class="bordered-box bootcamp-box" data-location="<?php echo ucfirst($bootcamp_local); ?>" data-tipo="<?php echo $bootcamp_type; ?>">
     <div class="row display-flex">
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
             <div class="box title">

@@ -30,9 +30,8 @@ get_header(); ?>
 											$args = array(
 												'post_type' => 'Bootcamps-tipo',
 												'post_status' => 'publish',
-											);
+                                            );
 											$the_query = new WP_Query( $args );
-
 											if( $the_query->have_posts() ): 
 												while( $the_query->have_posts() ) : $the_query->the_post(); 
 												echo '<option value="'.get_the_ID().'">'.get_the_title().'</option>';
@@ -57,22 +56,13 @@ get_header(); ?>
 											'post_type' => 'Bootcamps-local',
 											'post_status' => 'publish',
 										);
-										// query
 										$the_query = new WP_Query( $args );
 										if( $the_query->have_posts() ): 
 											while( $the_query->have_posts() ) : $the_query->the_post(); 
-											
-	
-											
 											echo '<option value="'.get_the_title().'">'.get_the_title().'</option>';
-											
-											
-											
 										endwhile;
 										wp_reset_query(); 
 										endif; ?>
-
-
                                     </select>
                                 </div>
                             </form>

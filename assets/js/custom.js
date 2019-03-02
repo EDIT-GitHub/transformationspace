@@ -138,7 +138,6 @@ jQuery(document).ready(function($) {
   var $bootcampLocation = $('#bootcamp-location-filter');
   
   
-  // $bootcampTipoCustomSelect.add($bootcampLocationCustomSelect).change(function() {
   jQuery(".row-filter .select-selected").on('DOMSubtreeModified', function(index) {
     console.log(index);
     var tipo = $bootcampTipo.val(); 
