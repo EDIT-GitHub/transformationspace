@@ -67,35 +67,27 @@
                     <div class="lead1">more stories</div>
                     <div class="stories-slider">
 
-											<?php
-										// query 
-										$args = array(
-											'post_type' => 'Stories',
-											'post_status' => 'publish',
-										);
-										
-											$the_query = new WP_Query( $args );
-											if( $the_query->have_posts() ): 
-												while( $the_query->have_posts() ) : $the_query->the_post(); 
-												$video_ID = get_field('vimeo_video_id');
-												?>
+                        <?php
+                        // query 
+                        $args = array(
+                            'post_type' => 'Stories',
+                            'post_status' => 'publish',
+                        );
+                        
+                        $the_query = new WP_Query( $args );
+                        if( $the_query->have_posts() ): 
+                            while( $the_query->have_posts() ) : $the_query->the_post(); 
+                            $video_ID = get_field('vimeo_video_id');
+                        ?>
 
-                        <div class="row">
-                            <!-- <div class="col-md-6 col-sm-6 col-sx-6 image-container visible-xs">
-                                <div class="play-button-outer small">
-                                    <a data-fancybox data-width="640" data-height="360"
-                                        href="https://vimeo.com/<?php the_field('vimeo_video_id'); ?>">
-                                        <img src="<?php the_field('video_cover'); ?>">
-                                    </a>
-                                </div>
-                            </div> -->
-                            <div class="col-md-6 col-sm-6 col-sx-6">
+                        <div>
+                            <div class="col-md-6 col-sm-6 col-sx-12">
                                 <div class="text-container">
                                     <div class="lead3"><?php the_title(); ?></div>
                                     <p class="small"><?php echo create_excerpt(get_field('text'), 84); ?></p>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-sx-6 image-container"
+                            <div class="col-md-6 col-sm-6 col-sx-12 image-container"
                                 style="background-image: url('<?php the_field('video_cover'); ?>');">
                                 <div class="play-button-outer small">
                                     <a data-fancybox data-width="640" data-height="360"

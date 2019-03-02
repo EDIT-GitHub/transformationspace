@@ -5361,10 +5361,6 @@ ul.alm-listing li.grid-item.template_2 {
 	padding-bottom: 30px;
 }
 
-.row-filter>[class*='col-'] {
-	padding: 0 8px;
-}
-
 /*style select items, on bootcamp page */
 
 .category-select .select-selected {
